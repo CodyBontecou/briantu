@@ -146,7 +146,7 @@ body {
 }
 
 /* ========================================
-   Client Detail Overlay
+   Client Detail Overlay - Cinematic Animation
    ======================================== */
 .client-detail {
     position: fixed;
@@ -155,8 +155,8 @@ body {
     background-color: #ffffff;
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-                visibility 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+                visibility 0.8s cubic-bezier(0.22, 1, 0.36, 1);
     overflow-y: auto;
 }
 
@@ -165,24 +165,27 @@ body {
     visibility: visible;
 }
 
+/* Close button - appears after name lands */
 .client-detail-close {
     position: fixed;
     top: 4vw;
     right: 4vw;
     z-index: 1001;
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
     background: none;
-    border: none;
+    border: 1px solid transparent;
     font-family: 'Eurostile Extended', sans-serif;
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: 300;
     color: #0a0a0a;
     cursor: pointer;
     opacity: 0;
-    transform: rotate(-90deg);
-    transition: opacity 0.4s ease 0.3s,
-                transform 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.3s;
+    transform: scale(0.5) rotate(-180deg);
+    transition: opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.9s,
+                transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.9s,
+                border-color 0.3s ease,
+                background-color 0.3s ease;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -190,39 +193,70 @@ body {
 
 .client-detail.active .client-detail-close {
     opacity: 1;
-    transform: rotate(0deg);
+    transform: scale(1) rotate(0deg);
 }
 
 .client-detail-close:hover {
-    opacity: 0.5;
+    border-color: #0a0a0a;
+    background-color: #0a0a0a;
+    color: #ffffff;
 }
 
+/* Header positioned top LEFT */
 .client-detail-header {
     position: fixed;
     top: 4vw;
-    right: calc(4vw + 50px);
+    left: 4vw;
     z-index: 1001;
+    pointer-events: none;
 }
 
+/* Static name in header - hidden, the flying name takes over */
 .client-detail-name {
     font-family: 'Eurostile Extended', sans-serif;
-    font-size: clamp(0.6rem, 1vw, 0.75rem);
+    font-size: clamp(0.7rem, 1.2vw, 0.9rem);
     font-weight: 400;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.15em;
     text-transform: uppercase;
     color: #0a0a0a;
     opacity: 0;
-    transform: translateX(30px);
     display: inline-block;
-    transition: opacity 0.5s ease 0.2s,
-                transform 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.2s;
 }
 
-.client-detail.active .client-detail-name {
+/* Show static name only after flying animation completes */
+.client-detail.animation-complete .client-detail-name {
     opacity: 1;
-    transform: translateX(0);
 }
 
+/* Flying client name - the star of the show */
+.flying-client-name {
+    position: fixed;
+    z-index: 2000;
+    font-family: 'Eurostile Extended', sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #0a0a0a;
+    pointer-events: none;
+    opacity: 0;
+    white-space: nowrap;
+}
+
+.flying-client-name.animating {
+    opacity: 1;
+    transition:
+        top 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+        left 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+        font-size 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+        letter-spacing 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.flying-client-name.fade-out {
+    opacity: 0;
+    transition: opacity 0.15s ease;
+}
+
+/* Content - delayed dramatic fade in */
 .client-detail-content {
     min-height: 100vh;
     display: flex;
@@ -231,14 +265,21 @@ body {
     align-items: center;
     padding: calc(8vh + 4vw) 4vw;
     opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 0.6s ease 0.3s,
-                transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.3s;
+    transform: translateY(60px);
+    transition: opacity 0s ease,
+                transform 0s ease;
 }
 
 .client-detail.active .client-detail-content {
+    opacity: 0;
+    transform: translateY(60px);
+}
+
+.client-detail.animation-complete .client-detail-content {
     opacity: 1;
     transform: translateY(0);
+    transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.1s,
+                transform 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.1s;
 }
 
 .client-detail-work {
@@ -250,8 +291,8 @@ body {
     font-family: 'Eurostile Extended', sans-serif;
     font-size: clamp(0.8rem, 1.5vw, 1rem);
     font-weight: 400;
-    line-height: 1.6;
-    letter-spacing: 0.05em;
+    line-height: 1.8;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     color: #0a0a0a;
     margin-bottom: 3rem;
@@ -271,13 +312,59 @@ body {
     letter-spacing: 0.15em;
     text-transform: uppercase;
     color: #666;
-    padding: 0.5rem 1rem;
+    padding: 0.6rem 1.2rem;
     border: 1px solid #ddd;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.client-detail.animation-complete .work-tag {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.5s ease,
+                transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.client-detail.animation-complete .work-tag:nth-child(1) {
+    transition-delay: 0.3s;
+}
+
+.client-detail.animation-complete .work-tag:nth-child(2) {
+    transition-delay: 0.4s;
+}
+
+.client-detail.animation-complete .work-tag:nth-child(3) {
+    transition-delay: 0.5s;
+}
+
+.work-tag:hover {
+    border-color: #0a0a0a;
+    color: #0a0a0a;
 }
 
 /* Body scroll lock when client detail is open */
 body.client-detail-open {
     overflow: hidden;
+}
+
+/* Closing animation */
+.client-detail.closing {
+    opacity: 0;
+    transition: opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.client-detail.closing .client-detail-content {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.3s ease,
+                transform 0.3s ease;
+}
+
+.client-detail.closing .client-detail-close {
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 0.2s ease,
+                transform 0.2s ease;
 }
 
 @media (max-width: 600px) {
@@ -288,11 +375,11 @@ body.client-detail-open {
 
     .client-detail-header {
         top: 6vw;
-        right: calc(6vw + 50px);
+        left: 6vw;
     }
 
     .client-detail-content {
-        padding: calc(15vh + 6vw) 6vw;
+        padding: calc(18vh + 6vw) 6vw;
     }
 
     .work-categories {
