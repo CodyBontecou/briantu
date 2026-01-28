@@ -102,7 +102,7 @@ body {
     font-family: 'Eurostile Extended', sans-serif;
     font-size: clamp(0.7rem, 1.2vw, 0.85rem);
     font-weight: 400;
-    line-height: 1.8;
+    line-height: 1.4;
     letter-spacing: 0.05em;
     color: #0a0a0a;
     text-transform: uppercase;
@@ -133,7 +133,7 @@ body {
     font-family: 'Eurostile Extended', sans-serif;
     font-size: clamp(0.6rem, 1vw, 0.75rem);
     font-weight: 400;
-    line-height: 1.8;
+    line-height: 1.4;
     letter-spacing: 0.05em;
     text-transform: uppercase;
     color: #0a0a0a;
@@ -156,7 +156,7 @@ body {
     }
 
     .clients-list li {
-        line-height: 2;
+        line-height: 1.5;
     }
 }
 
@@ -170,7 +170,7 @@ body {
    Gallery
    ======================================== */
 .gallery {
-    padding: calc(12vh + 4vw) 4vw calc(8vh + 4vw);
+    padding: calc(8vh + 4vw) 4vw calc(8vh + 4vw);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -271,7 +271,7 @@ figcaption {
     }
 
     .gallery {
-        padding: calc(15vh + 6vw) 6vw calc(10vh + 6vw);
+        padding: calc(10vh + 6vw) 6vw calc(10vh + 6vw);
         gap: 16vw;
     }
 
