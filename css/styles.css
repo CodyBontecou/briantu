@@ -3,6 +3,17 @@
    Clean, minimal, museum-quality presentation
    ======================================== */
 
+/* ========================================
+   Custom Font
+   ======================================== */
+@font-face {
+    font-family: 'Eurostile Extended';
+    src: url('../fonts/Eurostile Extended Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
 *,
 *::before,
 *::after {
@@ -16,7 +27,7 @@ html {
 }
 
 body {
-    font-family: 'Archivo', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: 'Eurostile Extended', -apple-system, BlinkMacSystemFont, sans-serif;
     background-color: #ffffff;
     color: #0a0a0a;
     line-height: 1.5;
@@ -44,9 +55,9 @@ body {
 }
 
 .wordmark {
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: clamp(1rem, 2vw, 1.25rem);
-    font-weight: 300;
+    font-family: 'Eurostile Extended', sans-serif;
+    font-size: clamp(0.7rem, 1.5vw, 0.9rem);
+    font-weight: 400;
     letter-spacing: 0.15em;
     text-transform: uppercase;
     pointer-events: auto;
@@ -88,12 +99,11 @@ body {
 }
 
 .hero-bio p {
-    font-family: 'Times New Roman', Times, serif;
-    font-style: italic;
-    font-size: clamp(0.85rem, 1.4vw, 1rem);
+    font-family: 'Eurostile Extended', sans-serif;
+    font-size: clamp(0.7rem, 1.2vw, 0.85rem);
     font-weight: 400;
-    line-height: 1.6;
-    letter-spacing: 0.02em;
+    line-height: 1.8;
+    letter-spacing: 0.05em;
     color: #0a0a0a;
     text-transform: uppercase;
 }
@@ -104,11 +114,10 @@ body {
 }
 
 .clients-label {
-    font-family: 'Times New Roman', Times, serif;
-    font-style: italic;
-    font-size: clamp(0.75rem, 1.2vw, 0.9rem);
+    font-family: 'Eurostile Extended', sans-serif;
+    font-size: clamp(0.6rem, 1vw, 0.75rem);
     font-weight: 400;
-    letter-spacing: 0.02em;
+    letter-spacing: 0.05em;
     text-transform: uppercase;
     color: #0a0a0a;
     margin-bottom: 1rem;
@@ -121,12 +130,11 @@ body {
 }
 
 .clients-list li {
-    font-family: 'Times New Roman', Times, serif;
-    font-style: italic;
-    font-size: clamp(0.75rem, 1.2vw, 0.9rem);
+    font-family: 'Eurostile Extended', sans-serif;
+    font-size: clamp(0.6rem, 1vw, 0.75rem);
     font-weight: 400;
     line-height: 1.8;
-    letter-spacing: 0.02em;
+    letter-spacing: 0.05em;
     text-transform: uppercase;
     color: #0a0a0a;
 }
@@ -197,10 +205,10 @@ body {
 }
 
 figcaption {
-    font-family: 'Archivo', sans-serif;
-    font-size: 0.75rem;
+    font-family: 'Eurostile Extended', sans-serif;
+    font-size: 0.65rem;
     font-weight: 400;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.15em;
     text-transform: uppercase;
     color: #666;
     text-align: center;
@@ -239,9 +247,9 @@ figcaption {
 }
 
 .contact-link {
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: clamp(0.75rem, 1.5vw, 0.9rem);
-    font-weight: 300;
+    font-family: 'Eurostile Extended', sans-serif;
+    font-size: clamp(0.6rem, 1.2vw, 0.75rem);
+    font-weight: 400;
     letter-spacing: 0.15em;
     text-transform: uppercase;
     text-decoration: none;
@@ -366,11 +374,10 @@ figcaption {
 }
 
 .overlay-title {
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: clamp(1.75rem, 4vw, 2.5rem);
-    font-weight: 300;
-    font-style: italic;
-    letter-spacing: 0.02em;
+    font-family: 'Eurostile Extended', sans-serif;
+    font-size: clamp(1.25rem, 3vw, 1.75rem);
+    font-weight: 400;
+    letter-spacing: 0.05em;
     color: #0a0a0a;
 }
 
@@ -382,10 +389,10 @@ figcaption {
 
 .overlay-year,
 .overlay-medium {
-    font-family: 'Archivo', sans-serif;
-    font-size: 0.7rem;
+    font-family: 'Eurostile Extended', sans-serif;
+    font-size: 0.6rem;
     font-weight: 400;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.15em;
     text-transform: uppercase;
     color: #333;
 }
@@ -397,10 +404,10 @@ figcaption {
 }
 
 .overlay-dimensions {
-    font-family: 'Archivo', sans-serif;
-    font-size: 0.65rem;
-    font-weight: 300;
-    letter-spacing: 0.15em;
+    font-family: 'Eurostile Extended', sans-serif;
+    font-size: 0.55rem;
+    font-weight: 400;
+    letter-spacing: 0.1em;
     color: #666;
     margin-top: 0.5rem;
 }
@@ -411,10 +418,10 @@ figcaption {
     bottom: 2rem;
     left: 50%;
     transform: translateX(-50%);
-    font-family: 'Archivo', sans-serif;
-    font-size: 0.6rem;
+    font-family: 'Eurostile Extended', sans-serif;
+    font-size: 0.5rem;
     font-weight: 400;
-    letter-spacing: 0.25em;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
     color: #666;
     opacity: 0;
