@@ -1,0 +1,365 @@
+/* ========================================
+   Gallery Portfolio - Faysal Matin Aesthetic
+   Clean, minimal, museum-quality presentation
+   ======================================== */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Archivo', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: #ffffff;
+    color: #0a0a0a;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* ========================================
+   Header
+   ======================================== */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 4vw;
+    background: linear-gradient(to bottom,
+        rgba(255, 255, 255, 1) 0%,
+        rgba(255, 255, 255, 0.9) 50%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    pointer-events: none;
+    text-align: center;
+}
+
+.wordmark {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    font-weight: 300;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    pointer-events: auto;
+}
+
+/* ========================================
+   Gallery
+   ======================================== */
+.gallery {
+    padding: calc(12vh + 4vw) 4vw calc(8vh + 4vw);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12vw;
+}
+
+.gallery-item {
+    width: 100%;
+    max-width: 900px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.image-wrapper {
+    width: 100%;
+    overflow: hidden;
+    background-color: #f5f5f5;
+}
+
+.image-wrapper img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                opacity 0.6s ease;
+}
+
+.gallery-item:hover .image-wrapper img {
+    transform: scale(1.02);
+}
+
+figcaption {
+    font-family: 'Archivo', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #666;
+    text-align: center;
+}
+
+/* ========================================
+   Centered Layout - Desktop
+   ======================================== */
+@media (min-width: 900px) {
+    .gallery {
+        gap: 16vw;
+    }
+
+    .gallery-item {
+        max-width: 1000px;
+    }
+}
+
+/* ========================================
+   Footer
+   ======================================== */
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 4vw;
+    background: linear-gradient(to top,
+        rgba(255, 255, 255, 1) 0%,
+        rgba(255, 255, 255, 0.9) 50%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    pointer-events: none;
+    text-align: center;
+}
+
+.contact-link {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    font-weight: 300;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #0a0a0a;
+    pointer-events: auto;
+    transition: opacity 0.3s ease;
+}
+
+.contact-link:hover {
+    opacity: 0.6;
+}
+
+/* ========================================
+   Mobile Adjustments
+   ======================================== */
+@media (max-width: 600px) {
+    .header {
+        padding: 6vw;
+    }
+
+    .gallery {
+        padding: calc(15vh + 6vw) 6vw calc(10vh + 6vw);
+        gap: 16vw;
+    }
+
+    figcaption {
+        font-size: 0.65rem;
+    }
+
+    .footer {
+        padding: 6vw;
+    }
+}
+
+/* ========================================
+   Fade-in Animation on Scroll
+   ======================================== */
+.gallery-item {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.gallery-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ========================================
+   Image Loading State
+   ======================================== */
+.image-wrapper img {
+    opacity: 0;
+    transition: opacity 0.6s ease,
+                filter 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.image-wrapper img.loaded {
+    opacity: 1;
+}
+
+/* ========================================
+   Image Overlay - Frosted Glass Effect
+   ======================================== */
+.image-wrapper {
+    position: relative;
+    cursor: pointer;
+}
+
+.image-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                visibility 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 10;
+}
+
+.image-overlay::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(20px) saturate(1.2);
+    -webkit-backdrop-filter: blur(20px) saturate(1.2);
+}
+
+.image-wrapper.active .image-overlay {
+    opacity: 1;
+    visibility: visible;
+}
+
+.image-wrapper.active img {
+    filter: blur(8px) brightness(0.95);
+    transform: scale(1.05);
+}
+
+/* Overlay Content */
+.overlay-content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 3rem;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.1s,
+                transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.1s;
+}
+
+.image-wrapper.active .overlay-content {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.overlay-title {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 300;
+    font-style: italic;
+    letter-spacing: 0.02em;
+    color: #0a0a0a;
+}
+
+.overlay-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.overlay-year,
+.overlay-medium {
+    font-family: 'Archivo', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #333;
+}
+
+.overlay-divider {
+    width: 24px;
+    height: 1px;
+    background-color: #999;
+}
+
+.overlay-dimensions {
+    font-family: 'Archivo', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 300;
+    letter-spacing: 0.15em;
+    color: #666;
+    margin-top: 0.5rem;
+}
+
+/* Close indicator */
+.overlay-close {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Archivo', sans-serif;
+    font-size: 0.6rem;
+    font-weight: 400;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #666;
+    opacity: 0;
+    transition: opacity 0.4s ease 0.3s;
+    z-index: 1;
+}
+
+.overlay-close::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background-color: #999;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.image-wrapper.active .overlay-close {
+    opacity: 1;
+}
+
+.image-wrapper.active .overlay-close:hover::after {
+    transform: scaleX(1);
+}
+
+/* Disable hover zoom when overlay is active */
+.gallery-item:hover .image-wrapper.active img {
+    transform: scale(1.05);
+}
+
+/* Mobile adjustments for overlay */
+@media (max-width: 600px) {
+    .overlay-content {
+        padding: 2rem;
+        gap: 1rem;
+    }
+
+    .overlay-meta {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .overlay-divider {
+        width: 1px;
+        height: 16px;
+    }
+
+    .overlay-close {
+        bottom: 1.5rem;
+    }
+}
