@@ -20,41 +20,41 @@
                 <div class="hero-clients">
                     <p class="clients-label">CLIENTS:</p>
                     <ul class="clients-list">
-                        <li>88RISING</li>
-                        <li>886 RESTAURANT</li>
-                        <li>APOLLO ID APP</li>
-                        <li>BAKED BY MELISSA</li>
-                        <li>BAZ LUHRMANN</li>
-                        <li>BLIZZARD ENTERTAINMENT</li>
-                        <li>CLOT</li>
-                        <li>DEN SOCIAL</li>
-                        <li>DNA RECORDS</li>
-                        <li>ELEPHANTE</li>
-                        <li>GOT7</li>
-                        <li>HARD 8 WORKING GROUP</li>
-                        <li>HIDDEN HORIZON RECORDS</li>
-                        <li>JORDAN BRAND</li>
-                        <li>JUICY COUTURE</li>
-                        <li>KAKAO ENTERTAINMENT</li>
-                        <li>MARK TUAN</li>
-                        <li>MELOVEMEALOT</li>
-                        <li>MITCHELL & NESS</li>
-                        <li>MISSION NYC</li>
-                        <li>NATIONAL BASKETBALL ASSOCIATION</li>
-                        <li>NEBULA NY</li>
-                        <li>NEW YORK CITY MARATHON</li>
-                        <li>NIGEL SYLVESTER</li>
-                        <li>NIKE USA & CHINA</li>
-                        <li>ODELL BECKHAM JR.</li>
-                        <li>ONE PULSE EVENTS</li>
-                        <li>OPENING CEREMONY NEW YORK</li>
-                        <li>SHOTTA SPENCE</li>
-                        <li>SPORTS ILLUSTRATED</li>
-                        <li>PARSONS SCHOOL OF DESIGN</li>
-                        <li>PATRIK ERVELL</li>
-                        <li>TMRW MAGAZINE</li>
-                        <li>UNIVERSITY OF HAWAII AT MANOA</li>
-                        <li>WARNER MUSIC GROUP KOREA</li>
+                        <li data-client="88rising">88RISING</li>
+                        <li data-client="886-restaurant">886 RESTAURANT</li>
+                        <li data-client="apollo-id-app">APOLLO ID APP</li>
+                        <li data-client="baked-by-melissa">BAKED BY MELISSA</li>
+                        <li data-client="baz-luhrmann">BAZ LUHRMANN</li>
+                        <li data-client="blizzard-entertainment">BLIZZARD ENTERTAINMENT</li>
+                        <li data-client="clot">CLOT</li>
+                        <li data-client="den-social">DEN SOCIAL</li>
+                        <li data-client="dna-records">DNA RECORDS</li>
+                        <li data-client="elephante">ELEPHANTE</li>
+                        <li data-client="got7">GOT7</li>
+                        <li data-client="hard-8-working-group">HARD 8 WORKING GROUP</li>
+                        <li data-client="hidden-horizon-records">HIDDEN HORIZON RECORDS</li>
+                        <li data-client="jordan-brand">JORDAN BRAND</li>
+                        <li data-client="juicy-couture">JUICY COUTURE</li>
+                        <li data-client="kakao-entertainment">KAKAO ENTERTAINMENT</li>
+                        <li data-client="mark-tuan">MARK TUAN</li>
+                        <li data-client="melovemealot">MELOVEMEALOT</li>
+                        <li data-client="mitchell-and-ness">MITCHELL & NESS</li>
+                        <li data-client="mission-nyc">MISSION NYC</li>
+                        <li data-client="nba">NATIONAL BASKETBALL ASSOCIATION</li>
+                        <li data-client="nebula-ny">NEBULA NY</li>
+                        <li data-client="nyc-marathon">NEW YORK CITY MARATHON</li>
+                        <li data-client="nigel-sylvester">NIGEL SYLVESTER</li>
+                        <li data-client="nike">NIKE USA & CHINA</li>
+                        <li data-client="odell-beckham-jr">ODELL BECKHAM JR.</li>
+                        <li data-client="one-pulse-events">ONE PULSE EVENTS</li>
+                        <li data-client="opening-ceremony">OPENING CEREMONY NEW YORK</li>
+                        <li data-client="shotta-spence">SHOTTA SPENCE</li>
+                        <li data-client="sports-illustrated">SPORTS ILLUSTRATED</li>
+                        <li data-client="parsons">PARSONS SCHOOL OF DESIGN</li>
+                        <li data-client="patrik-ervell">PATRIK ERVELL</li>
+                        <li data-client="tmrw-magazine">TMRW MAGAZINE</li>
+                        <li data-client="university-of-hawaii">UNIVERSITY OF HAWAII AT MANOA</li>
+                        <li data-client="warner-music-korea">WARNER MUSIC GROUP KOREA</li>
                     </ul>
                 </div>
             </div>
@@ -402,25 +402,28 @@
             <figcaption>Portfolio 19</figcaption>
         </figure>
 
-        <figure class="gallery-item">
-            <div class="image-wrapper" data-year="2025" data-medium="" data-dimensions="">
-                <img src="https://nhha9iqwle7teptc.public.blob.vercel-storage.com/PORTFOLIO-040825-20.png" alt="Portfolio 20">
-                <div class="image-overlay">
-                    <div class="overlay-content">
-                        <span class="overlay-title">Portfolio 20</span>
-                        <div class="overlay-meta">
-                            <span class="overlay-year">2025</span>
-                            <span class="overlay-divider"></span>
-                            <span class="overlay-medium"></span>
-                        </div>
-                        <span class="overlay-dimensions"></span>
-                    </div>
-                    <span class="overlay-close">Close</span>
+    </main>
+
+    <!-- Client Detail Overlay -->
+    <div class="client-detail" id="clientDetail">
+        <button class="client-detail-close" aria-label="Close">&times;</button>
+        <div class="client-detail-header">
+            <span class="client-detail-name"></span>
+        </div>
+        <div class="client-detail-content">
+            <div class="client-detail-work">
+                <p class="work-description">Creative direction, brand identity, and visual design work completed for this client.</p>
+                <div class="work-categories">
+                    <span class="work-tag">CREATIVE DIRECTION</span>
+                    <span class="work-tag">BRAND IDENTITY</span>
+                    <span class="work-tag">VISUAL DESIGN</span>
                 </div>
             </div>
-            <figcaption>Portfolio 20</figcaption>
-        </figure>
-    </main>
+        </div>
+    </div>
+
+    <!-- Flying client name element for dramatic animation -->
+    <div class="flying-client-name" id="flyingClientName"></div>
 
     <footer class="footer">
         <a href="mailto:2briantu@gmail.com" class="contact-link">Contact</a>
