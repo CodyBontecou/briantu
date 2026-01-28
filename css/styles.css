@@ -57,58 +57,13 @@ body {
    ======================================== */
 .hero {
     width: 100%;
-    max-width: 900px;
+    max-width: 1000px;
     min-height: 80vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 2rem 0;
-}
-
-.hero-content {
-    display: flex;
-    flex-direction: column;
-    gap: 4rem;
-}
-
-.hero-bio {
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: clamp(1.5rem, 4vw, 2.75rem);
-    font-weight: 300;
-    line-height: 1.4;
-    letter-spacing: 0.02em;
-    color: #0a0a0a;
-    text-align: left;
-}
-
-.hero-clients {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-}
-
-.clients-label {
-    font-family: 'Archivo', sans-serif;
-    font-size: 0.75rem;
-    font-weight: 400;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: #0a0a0a;
-}
-
-.clients-list {
-    font-family: 'Archivo', sans-serif;
-    font-size: clamp(0.65rem, 1.2vw, 0.8rem);
-    font-weight: 300;
-    line-height: 2;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: #666;
-}
-
-/* Hero animation */
-.hero {
     opacity: 0;
     transform: translateY(40px);
     transition: opacity 0.8s ease, transform 0.8s ease;
@@ -119,29 +74,87 @@ body {
     transform: translateY(0);
 }
 
-@media (max-width: 600px) {
+.hero-content {
+    display: flex;
+    flex-direction: row;
+    gap: 4rem;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.hero-bio {
+    flex: 1;
+    max-width: 55%;
+}
+
+.hero-bio p {
+    font-family: 'Times New Roman', Times, serif;
+    font-style: italic;
+    font-size: clamp(0.85rem, 1.4vw, 1rem);
+    font-weight: 400;
+    line-height: 1.6;
+    letter-spacing: 0.02em;
+    color: #0a0a0a;
+    text-transform: uppercase;
+}
+
+.hero-clients {
+    flex: 1;
+    max-width: 45%;
+}
+
+.clients-label {
+    font-family: 'Times New Roman', Times, serif;
+    font-style: italic;
+    font-size: clamp(0.75rem, 1.2vw, 0.9rem);
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: #0a0a0a;
+    margin-bottom: 1rem;
+}
+
+.clients-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.clients-list li {
+    font-family: 'Times New Roman', Times, serif;
+    font-style: italic;
+    font-size: clamp(0.75rem, 1.2vw, 0.9rem);
+    font-weight: 400;
+    line-height: 1.8;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: #0a0a0a;
+}
+
+@media (max-width: 768px) {
     .hero {
-        min-height: 70vh;
-        padding: 1rem 0;
+        min-height: auto;
+        padding: 4rem 0;
     }
 
     .hero-content {
+        flex-direction: column;
         gap: 3rem;
     }
 
-    .hero-bio {
-        line-height: 1.5;
+    .hero-bio,
+    .hero-clients {
+        max-width: 100%;
     }
 
-    .clients-list {
-        line-height: 2.2;
+    .clients-list li {
+        line-height: 2;
     }
 }
 
-@media (min-width: 900px) {
+@media (min-width: 1200px) {
     .hero {
-        max-width: 1000px;
-        min-height: 90vh;
+        max-width: 1100px;
     }
 }
 
