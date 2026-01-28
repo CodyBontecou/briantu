@@ -495,12 +495,13 @@ body.client-detail-open {
         gap: 3rem;
     }
 
-    .hero-bio {
-        order: 2;
+    .hero-bio,
+    .hero-clients {
+        max-width: 100%;
+        order: unset;
     }
 
     .hero-clients {
-        order: 1;
         text-align: left;
     }
 
