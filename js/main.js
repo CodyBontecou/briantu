@@ -3,6 +3,74 @@
  * Minimal gallery with scroll reveal
  */
 
+const IMAGE_BASE = 'https://nhha9iqwle7teptc.public.blob.vercel-storage.com/PORTFOLIO-040825-';
+
+// Client data with images, descriptions, and tags
+const CLIENT_DATA = {
+    'elephante': {
+        description: 'Complete visual identity and merchandise design for Elephante\'s Dynasty Season North America Tour, blending Asian architectural motifs with contemporary concert aesthetics.',
+        tags: ['TOUR VISUALS', 'APPAREL DESIGN', 'ART DIRECTION'],
+        images: ['02', '03']
+    },
+    'mark-tuan': {
+        description: 'Comprehensive creative direction for Mark Tuan\'s "The Other Side" album campaign, including artwork, tour visuals, physical packaging, and promotional materials.',
+        tags: ['ALBUM ARTWORK', 'TOUR DESIGN', 'PACKAGING', 'ART DIRECTION'],
+        images: ['06', '07', '08', '09']
+    },
+    '88rising': {
+        description: 'Festival branding and merchandise design for Head in the Clouds music festivals across Manila and Jakarta, creating cohesive visual systems and collectible merchandise.',
+        tags: ['FESTIVAL BRANDING', 'MERCHANDISE', 'EVENT DESIGN'],
+        images: ['11', '12', '13']
+    },
+    'nike': {
+        description: 'Environmental graphics and retail experience design for Nike House of Innovation flagship stores in Shanghai and New York City.',
+        tags: ['RETAIL DESIGN', 'ENVIRONMENTAL GRAPHICS', 'BRAND EXPERIENCE'],
+        images: ['16', '17', '19']
+    },
+    'jordan-brand': {
+        description: 'Product design collaboration with Jordan Brand, contributing to footwear design and brand visual identity.',
+        tags: ['PRODUCT DESIGN', 'FOOTWEAR', 'BRAND IDENTITY'],
+        images: ['18']
+    },
+    'got7': {
+        description: 'Album artwork and visual identity for GOT7\'s "Winter Heptagon" release, featuring striking monochromatic design with dynamic typography.',
+        tags: ['ALBUM ARTWORK', 'VISUAL IDENTITY', 'TYPOGRAPHY'],
+        images: ['05']
+    },
+    'one-pulse-events': {
+        description: 'Event branding and promotional design for Spring Festival 2025 Lunar New Year Celebration at Avant Gardner, featuring bold graphics and artist lineup presentation.',
+        tags: ['EVENT BRANDING', 'POSTER DESIGN', 'ART DIRECTION'],
+        images: ['04']
+    },
+    'apollo-id-app': {
+        description: 'Event design and brand partnerships for Apollo ID, including Hip Hop Night programming and Sports Illustrated Big Game Weekend experiences.',
+        tags: ['EVENT DESIGN', 'BRAND PARTNERSHIPS', 'VISUAL IDENTITY'],
+        images: ['14', '15']
+    },
+    'nebula-ny': {
+        description: 'Event branding and visual design for Nebula NY\'s Hip Hop Night series, creating immersive promotional materials for live performances.',
+        tags: ['EVENT BRANDING', 'POSTER DESIGN'],
+        images: ['14']
+    },
+    'sports-illustrated': {
+        description: 'Visual design for Sports Illustrated\'s exclusive Big Game Weekend party experience, merging sports culture with premium event aesthetics.',
+        tags: ['EVENT DESIGN', 'BRAND COLLABORATION'],
+        images: ['15']
+    },
+    'mission-nyc': {
+        description: 'Apparel design and graphic development for Mission NYC, featuring bold Americana-inspired graphics and streetwear aesthetics.',
+        tags: ['APPAREL DESIGN', 'GRAPHIC DESIGN'],
+        images: ['10']
+    }
+};
+
+// Default content for clients without specific portfolio images
+const DEFAULT_CLIENT = {
+    description: 'Creative direction, brand identity, and visual design work completed for this client.',
+    tags: ['CREATIVE DIRECTION', 'BRAND IDENTITY', 'VISUAL DESIGN'],
+    images: []
+};
+
 document.addEventListener('DOMContentLoaded', () => {
     initScrollReveal();
     initImageLoading();
@@ -102,6 +170,9 @@ function initClientDetail() {
     const clientNameEl = clientDetail.querySelector('.client-detail-name');
     const closeBtn = clientDetail.querySelector('.client-detail-close');
     const flyingName = document.getElementById('flyingClientName');
+    const descriptionEl = clientDetail.querySelector('.work-description');
+    const categoriesEl = clientDetail.querySelector('.work-categories');
+    const galleryEl = clientDetail.querySelector('.client-detail-gallery');
 
     let isAnimating = false;
 
@@ -150,11 +221,45 @@ function initClientDetail() {
         }
     }
 
+    function populateClientContent(slug) {
+        const data = CLIENT_DATA[slug] || DEFAULT_CLIENT;
+
+        // Set description
+        descriptionEl.textContent = data.description;
+
+        // Set tags
+        categoriesEl.innerHTML = data.tags.map(tag =>
+            `<span class="work-tag">${tag}</span>`
+        ).join('');
+
+        // Set gallery images
+        if (data.images && data.images.length > 0) {
+            galleryEl.innerHTML = data.images.map((imgNum, index) =>
+                `<div class="client-gallery-item${index === 0 && data.images.length > 1 ? ' featured' : ''}">
+                    <img src="${IMAGE_BASE}${imgNum}.png" alt="${slug} work ${index + 1}" loading="lazy">
+                </div>`
+            ).join('');
+
+            // Add multi-image class for grid layout
+            if (data.images.length > 1) {
+                galleryEl.classList.add('multi-image');
+            } else {
+                galleryEl.classList.remove('multi-image');
+            }
+        } else {
+            galleryEl.innerHTML = '<div class="no-work-message">Portfolio images coming soon</div>';
+            galleryEl.classList.remove('multi-image');
+        }
+    }
+
     function openClientDetail(slug, name, clickedElement) {
         // Update URL
         const url = new URL(window.location);
         url.searchParams.set('client', slug);
         history.pushState({ client: slug }, '', url);
+
+        // Populate content
+        populateClientContent(slug);
 
         // Trigger the cinematic animation
         animateClientName(clickedElement, name, slug);
@@ -228,6 +333,7 @@ function initClientDetail() {
 
     // Instant show for URL navigation (no animation)
     function showClientDetailInstant(slug, name) {
+        populateClientContent(slug);
         clientNameEl.textContent = name;
         clientDetail.classList.add('active', 'animation-complete');
         document.body.classList.add('client-detail-open');
