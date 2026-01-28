@@ -256,7 +256,7 @@ body {
     transition: opacity 0.15s ease;
 }
 
-/* Content - delayed dramatic fade in */
+/* Content - delayed fade in */
 .client-detail-content {
     min-height: 100vh;
     display: flex;
@@ -265,21 +265,16 @@ body {
     align-items: center;
     padding: calc(8vh + 4vw) 4vw;
     opacity: 0;
-    transform: translateY(60px);
-    transition: opacity 0s ease,
-                transform 0s ease;
+    transition: opacity 0s ease;
 }
 
 .client-detail.active .client-detail-content {
     opacity: 0;
-    transform: translateY(60px);
 }
 
 .client-detail.animation-complete .client-detail-content {
     opacity: 1;
-    transform: translateY(0);
-    transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.1s,
-                transform 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.1s;
+    transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.1s;
 }
 
 .client-detail-work {
@@ -315,14 +310,11 @@ body {
     padding: 0.6rem 1.2rem;
     border: 1px solid #ddd;
     opacity: 0;
-    transform: translateY(20px);
 }
 
 .client-detail.animation-complete .work-tag {
     opacity: 1;
-    transform: translateY(0);
-    transition: opacity 0.5s ease,
-                transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    transition: opacity 0.5s ease;
 }
 
 .client-detail.animation-complete .work-tag:nth-child(1) {
@@ -355,9 +347,7 @@ body.client-detail-open {
 
 .client-detail.closing .client-detail-content {
     opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.3s ease,
-                transform 0.3s ease;
+    transition: opacity 0.3s ease;
 }
 
 .client-detail.closing .client-detail-close {
@@ -492,7 +482,7 @@ figcaption {
         rgba(255, 255, 255, 0) 100%
     );
     pointer-events: none;
-    text-align: center;
+    text-align: right;
 }
 
 .contact-link {
