@@ -53,6 +53,99 @@ body {
 }
 
 /* ========================================
+   Hero Section
+   ======================================== */
+.hero {
+    width: 100%;
+    max-width: 900px;
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 0;
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+}
+
+.hero-bio {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(1.5rem, 4vw, 2.75rem);
+    font-weight: 300;
+    line-height: 1.4;
+    letter-spacing: 0.02em;
+    color: #0a0a0a;
+    text-align: left;
+}
+
+.hero-clients {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.clients-label {
+    font-family: 'Archivo', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #0a0a0a;
+}
+
+.clients-list {
+    font-family: 'Archivo', sans-serif;
+    font-size: clamp(0.65rem, 1.2vw, 0.8rem);
+    font-weight: 300;
+    line-height: 2;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #666;
+}
+
+/* Hero animation */
+.hero {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.hero.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media (max-width: 600px) {
+    .hero {
+        min-height: 70vh;
+        padding: 1rem 0;
+    }
+
+    .hero-content {
+        gap: 3rem;
+    }
+
+    .hero-bio {
+        line-height: 1.5;
+    }
+
+    .clients-list {
+        line-height: 2.2;
+    }
+}
+
+@media (min-width: 900px) {
+    .hero {
+        max-width: 1000px;
+        min-height: 90vh;
+    }
+}
+
+/* ========================================
    Gallery
    ======================================== */
 .gallery {

@@ -10,9 +10,10 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /**
- * Reveal gallery items on scroll
+ * Reveal gallery items and hero on scroll
  */
 function initScrollReveal() {
+    const hero = document.querySelector('.hero');
     const items = document.querySelectorAll('.gallery-item');
 
     const observer = new IntersectionObserver((entries) => {
@@ -28,6 +29,11 @@ function initScrollReveal() {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
     });
+
+    // Observe hero section
+    if (hero) {
+        observer.observe(hero);
+    }
 
     items.forEach(item => observer.observe(item));
 }
