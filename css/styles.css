@@ -235,7 +235,6 @@ figcaption {
 }
 
 .image-wrapper.active img {
-    filter: blur(8px) brightness(0.95);
     transform: scale(1.05);
 }
 
