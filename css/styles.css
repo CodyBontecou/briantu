@@ -134,7 +134,7 @@ figcaption {
 
 .contact-link {
     font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: clamp(1rem, 2vw, 1.25rem);
+    font-size: clamp(0.75rem, 1.5vw, 0.9rem);
     font-weight: 300;
     letter-spacing: 0.15em;
     text-transform: uppercase;
